@@ -36,17 +36,44 @@
             <p>Jestem 17-letnim studentem informatyki na Uczelni Vistula. Rozwijam swoje umiejętności w programowaniu, szczególnie w C# oraz pracy z bazami danych (SQL). Ponadto interesuję się e-commercem oraz rynkiem cyfrowym. Zawsze szukam nowych możliwości do nauki i praktycznego wykorzystania wiedzy w realnych projektach.</p>
         </section>
 
-        <section>
-            <h2>Umiejętności</h2>
-            <ul>
-<section id="dynamic-content">
+       <section id="cv-dane">
     <h3>Moje umiejętności:</h3>
     <ul id="skills-list"></ul>
-            <h3>Moje projekty:</h3>
+
+    <h3>Moje projekty:</h3>
     <ul id="projects-list"></ul>
 </section>
-            </ul>
-        </section>
+
+<hr> <section id="kontakt">
+    <h3>Kontakt</h3>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="firstName">Imię:</label>
+            <input type="text" id="firstName" name="firstName">
+            <span class="error" id="firstNameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" id="lastName" name="lastName">
+            <span class="error" id="lastNameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="text" id="email" name="email">
+            <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <span class="error" id="messageError"></span>
+        </div>
+
+        <button type="submit">Wyślij</button>
+    </form>
+</section>
 
        <button id="btn-ukryj" onclick="toggleSection()" style="margin-bottom: 10px; padding: 5px 10px; cursor: pointer;">
             👁️ Ukryj Doświadczenie
