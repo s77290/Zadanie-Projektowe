@@ -87,3 +87,36 @@ function clearErrors() {
     const errors = document.querySelectorAll('.error');
     errors.forEach(error => error.textContent = '');
 }
+
+// === ZADANIE 6: Pobieranie danych z pliku JSON ===
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 5. Pobieranie danych za pomocą fetch()
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Błąd ładowania pliku JSON');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 2 & 3. Generowanie listy umiejętności
+            const skillsList = document.getElementById('skills-list');
+            data.umiejetnosci.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                skillsList.appendChild(li);
+            });
+
+            // 2 & 3. Generowanie listy projektów
+            const projectsList = document.getElementById('projects-list');
+            data.projekty.forEach(project => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${project.nazwa}</strong>: ${project.opis}`;
+                projectsList.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error('Wystąpił błąd:', error);
+        });
+});
