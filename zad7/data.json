@@ -1,0 +1,18 @@
+{
+  "umiejetnosci": [
+    "HTML, CSS, JavaScript",
+    "C# oraz tworzenie aplikacji Windows Forms",
+    "E-commerce, analiza rynku i negocjacje (Vinted, OLX)",
+    "Obsługa narzędzi AI do automatyzacji procesów"
+  ],
+  "projekty": [
+    {
+      "nazwa": "ProjektNr2_IvantsivVadym_77290",
+      "opis": "Wielostronicowa aplikacja okienkowa napisana w C#."
+    },
+    {
+      "nazwa": "Zautomatyzowane kanały YouTube (DACH/USA)",
+      "opis": "Tworzenie treści wideo z wykorzystaniem sztucznej inteligencji."
+    }
+  ]
+}
