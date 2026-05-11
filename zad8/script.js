@@ -1,4 +1,5 @@
 import { db, collection, addDoc } from './firebase.js';
+
 function toggleTheme() {
     let themeLink = document.getElementById("theme-style");
     if (themeLink.getAttribute("href") === "red.css") {
@@ -11,21 +12,17 @@ function toggleTheme() {
 function toggleSection() {
     let section = document.getElementById("sekcja-doswiadczenie");
     let button = document.getElementById("btn-ukryj");
-
     if (section.style.display === "none") {
         section.style.display = "block";
-        button.innerText = "👁️ Ukryj Doświadczenie"; 
-    } 
-    else {
+        button.innerText = "👁️ Ukryj Doświadczenie";
+    } else {
         section.style.display = "none";
-        button.innerText = "👁️ Pokaż Doświadczenie"; 
+        button.innerText = "👁️ Pokaż Doświadczenie";
     }
 }
 
-
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
-
     clearErrors();
     let isValid = true;
 
@@ -34,7 +31,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const email = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    const hasNumbersRegex = /\d/; 
+    const hasNumbersRegex = /\d/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!firstName) {
@@ -66,23 +63,25 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         isValid = false;
     }
 
-   if (isValid) {
-    addDoc(collection(db, "kontakty"), {
-        imie: firstName,
-        nazwisko: lastName,
-        email: email,
-        wiadomosc: message,
-        data: new Date().toISOString()
-    })
-    .then(() => {
-        alert('Sukces! Dane zostały wysłane do bazy danych!');
-        document.getElementById('contactForm').reset();
-    })
-    .catch((error) => {
-        console.error('Błąd:', error);
-        alert('Błąd wysyłania danych!');
-    });
-}
+    if (isValid) {
+        addDoc(collection(db, "kontakty"), {
+            imie: firstName,
+            nazwisko: lastName,
+            email: email,
+            wiadomosc: message,
+            data: new Date().toISOString()
+        })
+        .then(() => {
+            alert('Sukces! Dane zostały wysłane do bazy danych!');
+            document.getElementById('contactForm').reset();
+        })
+        .catch((error) => {
+            console.error('Błąd:', error);
+            alert('Błąd wysyłania danych!');
+        });
+    }
+});
+
 function showError(elementId, message) {
     document.getElementById(elementId).textContent = message;
 }
@@ -92,19 +91,18 @@ function clearErrors() {
     errors.forEach(error => error.textContent = '');
 }
 
-// === ZADANIE 6: Pobieranie danych z pliku JSON ===
+// === ZADANIE 6: JSON ===
+// === ZADANIE 7: Local Storage ===
+// === ZADANIE 8: Firebase ===
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 5. Pobieranie danych za pomocą fetch()
+    // JSON
     fetch('data.json')
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Błąd ładowania pliku JSON');
-            }
+            if (!response.ok) throw new Error('Błąd ładowania pliku JSON');
             return response.json();
         })
         .then(data => {
-            // 2 & 3. Generowanie listy umiejętności
             const skillsList = document.getElementById('skills-list');
             data.umiejetnosci.forEach(skill => {
                 const li = document.createElement('li');
@@ -112,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 skillsList.appendChild(li);
             });
 
-            // 2 & 3. Generowanie listy projektów
             const projectsList = document.getElementById('projects-list');
             data.projekty.forEach(project => {
                 const li = document.createElement('li');
@@ -120,10 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 projectsList.appendChild(li);
             });
         })
-        .catch(error => {
-            console.error('Wystąpił błąd:', error);
-        });
+        .catch(error => console.error('Wystąpił błąd:', error));
+
+    // Local Storage
+    renderNotes();
 });
+
 function addNote() {
     const input = document.getElementById('newNote');
     const text = input.value.trim();
@@ -132,7 +131,6 @@ function addNote() {
     let notes = JSON.parse(localStorage.getItem('cvNotes') || '[]');
     notes.push(text);
     localStorage.setItem('cvNotes', JSON.stringify(notes));
-
     input.value = '';
     renderNotes();
 }
@@ -146,6 +144,7 @@ function deleteNote(index) {
 
 function renderNotes() {
     const list = document.getElementById('notes-list');
+    if (!list) return;
     const notes = JSON.parse(localStorage.getItem('cvNotes') || '[]');
     list.innerHTML = '';
     notes.forEach((note, index) => {
@@ -154,7 +153,3 @@ function renderNotes() {
         list.appendChild(li);
     });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderNotes();
-});
