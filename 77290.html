@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Ivantsiv Vadym 77290 </title>
+
+        <link id="theme-style" rel="stylesheet" href="red.css">
+
+            <link rel="icon" href="data:,">
+</head>
+<body>
+
+        <button class="theme-btn" onclick="toggleTheme()" style="margin-bottom: 20px; padding: 10px 20px; cursor: pointer; font-size: 16px;">
+        🎨 Zmienić kolor
+    </button>
+
+    <header>
+        <h1>Vadym Ivantsiv</h1> 
+                <img src="photo_2026-03-19_21-01-44.jpg" alt="Vadym Ivantsiv" style="max-width: 150px; height: auto; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"> 
+    </header>
+
+    <main>
+        <section>
+            <h2>Kontakt</h2>
+            <p>E-mail: <a href="mailto:vivants1@stu.vistula.edu.pl">Mój email</a></p>
+            <p>Telefon: <a href="tel:+48694653723">+42 434 654 435</a></p>
+            <p>Miasto: Warszawa</p>
+            
+            <p><a href="https://github.com/s77290" target="_blank" rel="noopener noreferrer">Mój Profil GitHub</a></p>
+            <p><a href="https://steamcommunity.com/profiles/76561199239521978/" target="_blank" rel="noopener noreferrer">Mój Steam</a></p>
+        </section>
+
+        <section>
+            <h2>O mnie</h2>
+            <p>Jestem 17-letnim studentem informatyki na Uczelni Vistula. Rozwijam swoje umiejętności w programowaniu, szczególnie w C# oraz pracy z bazami danych (SQL). Ponadto interesuję się e-commercem oraz rynkiem cyfrowym. Zawsze szukam nowych możliwości do nauki i praktycznego wykorzystania wiedzy w realnych projektach.</p>
+        </section>
+
+       <section id="cv-dane">
+    <h3>Moje umiejętności:</h3>
+    <ul id="skills-list"></ul>
+
+    <h3>Moje projekty:</h3>
+    <ul id="projects-list"></ul>
+</section>
+
+<hr> <section id="kontakt">
+    <h3>Kontakt</h3>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="firstName">Imię:</label>
+            <input type="text" id="firstName" name="firstName">
+            <span class="error" id="firstNameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" id="lastName" name="lastName">
+            <span class="error" id="lastNameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="text" id="email" name="email">
+            <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <span class="error" id="messageError"></span>
+        </div>
+
+        <button type="submit">Wyślij</button>
+    </form>
+</section>
+
+       <button id="btn-ukryj" onclick="toggleSection()" style="margin-bottom: 10px; padding: 5px 10px; cursor: pointer;">
+            👁️ Ukryj Doświadczenie
+        </button>
+
+        <section id="sekcja-doswiadczenie">
+            <h2>Doświadczenie</h2>
+            <article>
+                <h3>Specjalista ds. E-commerce (Własna działalność)</h3>
+                <p>2024 - obecnie</p>
+                <p>Analiza rynku sprzętu elektronicznego oraz odzieży. Zarządzanie budżetem, optymalizacja kosztów zakupu i negocjacje z klientami. Skuteczne maksymalizowanie marży sprzedażowej.</p>
+            </article>
+            <article>
+                <h3>Digital Content Creator (Projekty YouTube)</h3>
+                <p>2023 - 2024</p>
+                <p>Tworzenie zautomatyzowanych anglojęzycznych kanałów wideo na rynek amerykański. Analiza algorytmów platformy oraz wykorzystanie narzędzi AI w procesie twórczym.</p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Edukacja</h2>
+            <p>Uczelnia Vistula w Warszawie – Informatyka, 2025 - obecnie</p>
+            <p>Szkoła Podstawowa nr 2, Borszczów, 2014 - 2025</p>
+        </section>
+
+        <section>
+            <h2>Projekty</h2>
+            <ol>
+                <li>Projekt struktury bazy danych zrealizowany w SQL Server Management Studio.</li>
+                <li>Interaktywna aplikacja z interfejsem graficznym stworzona w środowisku C# Windows Forms.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Vadym Ivantsiv</p>
+    </footer>
+<section id="local-storage-section">
+    <h2>📝 Moje notatki</h2>
+    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <input type="text" id="newNote" placeholder="Wpisz notatkę..." style="padding: 8px; flex: 1;">
+        <button onclick="addNote()" style="padding: 8px 16px; cursor: pointer;">➕ Dodaj</button>
+    </div>
+    <ul id="notes-list"></ul>
+</section>
+     <script src="script.js"></script>
+</body>
+</html>
