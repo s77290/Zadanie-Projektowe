@@ -1,3 +1,4 @@
+import { db, collection, addDoc } from './firebase.js';
 function toggleTheme() {
     let themeLink = document.getElementById("theme-style");
     if (themeLink.getAttribute("href") === "red.css") {
@@ -65,20 +66,23 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         isValid = false;
     }
 
-    if (isValid) {
-        console.log("=== Otrzymano nowe dane z formularza ===");
-        console.log("Imię: " + firstName);
-        console.log("Nazwisko: " + lastName);
-        console.log("E-mail: " + email);
-        console.log("Wiadomość: " + message);
-        console.log("========================================");
-
-        alert('Sukces! Formularz wypełniony poprawnie. Sprawdź konsolę (F12), aby zobaczyć dane.');
-        
+   if (isValid) {
+    addDoc(collection(db, "kontakty"), {
+        imie: firstName,
+        nazwisko: lastName,
+        email: email,
+        wiadomosc: message,
+        data: new Date().toISOString()
+    })
+    .then(() => {
+        alert('Sukces! Dane zostały wysłane do bazy danych!');
         document.getElementById('contactForm').reset();
-    }
-});
-
+    })
+    .catch((error) => {
+        console.error('Błąd:', error);
+        alert('Błąd wysyłania danych!');
+    });
+}
 function showError(elementId, message) {
     document.getElementById(elementId).textContent = message;
 }
